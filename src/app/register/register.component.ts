@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -25,7 +26,16 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      // handle registration logic
+          this.authService.register(this.registerForm.value).subscribe({
+        next: (response) => {
+          localStorage.setItem("token", response.token);
+          debugger;
+          // redirect to home page
+        },
+        error: (error) => {},
+      });
+
+
     }
   }
 }
