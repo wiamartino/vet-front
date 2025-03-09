@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: "app-login",
@@ -41,7 +43,12 @@ export class LoginComponent {
           localStorage.setItem("token", response.token);
         },
         error: (errorResponse) => {
-          alert(errorResponse.error.error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errorResponse.error.error,
+          })
+          // alert(errorResponse.error.error);
         },
       });
     }

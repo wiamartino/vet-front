@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: "app-register",
@@ -39,7 +41,11 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          alert(response.message);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: response.message,
+          })
           this.router.navigate(["/login"]);
         },
         error: (error) => {
