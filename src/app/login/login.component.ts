@@ -41,6 +41,8 @@ export class LoginComponent {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
           localStorage.setItem("token", response.token);
+          // Navigate to dashboard after successful login
+          this.router.navigate(['/dashboard']);
         },
         error: (errorResponse) => {
           Swal.fire({
@@ -48,7 +50,6 @@ export class LoginComponent {
             title: 'Oops...',
             text: errorResponse.error.error,
           })
-          // alert(errorResponse.error.error);
         },
       });
     }

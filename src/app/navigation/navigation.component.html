@@ -1,0 +1,66 @@
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">Vet Clinic</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="logout()" matTooltip="Logout">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" class="sidenav">
+    <div class="sidenav-header">
+      <div class="user-avatar">
+        <mat-icon>person</mat-icon>
+      </div>
+      <div class="user-info">
+        <span class="user-name">Veterinarian</span>
+        <span class="user-role">Admin</span>
+      </div>
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" [class.active-link]="activeLink === '/dashboard'">
+        <mat-icon class="nav-icon">dashboard</mat-icon>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/clients" [class.active-link]="isActive('/clients')">
+        <mat-icon class="nav-icon">people</mat-icon>
+        <span class="nav-label">Clients</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/pets" [class.active-link]="isActive('/pets')">
+        <mat-icon class="nav-icon">pets</mat-icon>
+        <span class="nav-label">Pets</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/appointments" [class.active-link]="isActive('/appointments')">
+        <mat-icon class="nav-icon">event</mat-icon>
+        <span class="nav-label">Appointments</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/treatments" [class.active-link]="isActive('/treatments')">
+        <mat-icon class="nav-icon">healing</mat-icon>
+        <span class="nav-label">Treatments</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/medications" [class.active-link]="isActive('/medications')">
+        <mat-icon class="nav-icon">medication</mat-icon>
+        <span class="nav-label">Medications</span>
+      </a>
+      <a mat-list-item routerLink="/dashboard/invoices" [class.active-link]="isActive('/invoices')">
+        <mat-icon class="nav-icon">receipt</mat-icon>
+        <span class="nav-label">Invoices</span>
+      </a>
+    </mat-nav-list>
+
+    <div class="sidenav-footer">
+      <button mat-button class="logout-button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

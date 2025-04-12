@@ -1,0 +1,67 @@
+<app-navigation>
+  <div class="dashboard-container">
+    <!-- Only show dashboard overview on the main dashboard route -->
+    @if (!isChildRoute) {
+      <app-welcome-widget></app-welcome-widget>
+      
+      <div class="dashboard-overview">
+        <h2 class="dashboard-title">Clinic Overview</h2>
+        
+        <div class="stats-cards">
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>people</mat-icon>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">{{ statistics.clients }}</div>
+                <div class="stat-label">Clients</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>pets</mat-icon>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">{{ statistics.pets }}</div>
+                <div class="stat-label">Pets</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>event</mat-icon>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">{{ statistics.appointments }}</div>
+                <div class="stat-label">Appointments</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>healing</mat-icon>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">{{ statistics.treatments }}</div>
+                <div class="stat-label">Treatments</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    }
+
+    <!-- Router outlet for child components -->
+    <div class="dashboard-content" [ngClass]="{'has-child': isChildRoute}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</app-navigation>
