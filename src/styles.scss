@@ -1,4 +1,100 @@
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+
+// For Angular Material 19.x, we need to import color palettes separately
+// @use '@angular/material/theming' as theming;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// For each palette, you can optionally specify a default, lighter, and darker hue.
+
+// Primary palette - Teal-based colors for a fresh, medical feel
+// $vet-primary: mat.define-palette(theming.$teal-palette, 600, 400, 800);
+
+// // Accent palette - Purple accents for a professional look
+// $vet-accent: mat.define-palette(theming.$purple-palette, 500, 300, 700);
+
+// // Warning palette - Default red
+// $vet-warn: mat.define-palette(theming.$red-palette);
+
+// Create the theme object 
+// $vet-theme: mat.define-light-theme((
+//   color: (
+//     primary: $vet-primary,
+//     accent: $vet-accent,
+//     warn: $vet-warn,
+//   ),
+//   typography: mat.define-typography-config(),
+//   density: 0,
+// ));
+
+// Include theme styles for core and each component used
+// @include mat.all-component-themes($vet-theme);
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+// Global card styles
+.mat-mdc-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden;
+}
+
+// Animation for hover effects
+@keyframes card-lift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+// Global button improvements
+.mat-mdc-raised-button {
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+// Table styling improvements
+.mat-mdc-table {
+  border-radius: 8px;
+  overflow: hidden;
+  
+  .mat-mdc-header-row {
+    background-color: #f5f5f5;
+  }
+  
+  .mat-mdc-row:hover {
+    background-color: rgba(0, 150, 136, 0.04);
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #009688;
+}
