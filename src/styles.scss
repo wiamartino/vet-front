@@ -1,37 +1,40 @@
 // Custom Theming for Angular Material
 @use '@angular/material' as mat;
 
+// Include the common styles for Angular Material
+@include mat.core();
+
+
 // For Angular Material 19.x, we need to import color palettes separately
 // @use '@angular/material/theming' as theming;
 
-// Include the common styles for Angular Material
-@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // For each palette, you can optionally specify a default, lighter, and darker hue.
 
 // Primary palette - Teal-based colors for a fresh, medical feel
-// $vet-primary: mat.define-palette(theming.$teal-palette, 600, 400, 800);
+$vet-primary: mat.m2-define-palette(mat.$m2-teal-palette, 600, 400, 800);
+
 
 // // Accent palette - Purple accents for a professional look
-// $vet-accent: mat.define-palette(theming.$purple-palette, 500, 300, 700);
+ $vet-accent: mat.m2-define-palette(mat.$m2-purple-palette, 500, 300, 700);
 
 // // Warning palette - Default red
-// $vet-warn: mat.define-palette(theming.$red-palette);
+ $vet-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Create the theme object 
-// $vet-theme: mat.define-light-theme((
-//   color: (
-//     primary: $vet-primary,
-//     accent: $vet-accent,
-//     warn: $vet-warn,
-//   ),
-//   typography: mat.define-typography-config(),
-//   density: 0,
-// ));
+ $vet-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $vet-primary,
+    accent: $vet-accent,
+    warn: $vet-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
 
 // Include theme styles for core and each component used
-// @include mat.all-component-themes($vet-theme);
+@include mat.all-component-themes($vet-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
