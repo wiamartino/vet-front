@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -18,6 +19,7 @@ import Swal from 'sweetalert2';
     MatCardModule,
     ReactiveFormsModule,
     CommonModule,
+    MatIconModule,
   ],
   templateUrl: "./login.component.html",
   styleUrl: "./login.component.scss",

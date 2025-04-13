@@ -1,16 +1,16 @@
 <mat-toolbar color="primary" class="toolbar">
-  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" aria-label="Toggle menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="app-title">Vet Clinic</span>
+  <span class="app-title">Vet Clinic Pro</span>
   <span class="spacer"></span>
-  <button mat-icon-button (click)="logout()" matTooltip="Logout">
+  <button mat-icon-button matTooltip="Logout" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" class="sidenav">
+  <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" [opened]="!isSmallScreen" class="sidenav">
     <div class="sidenav-header">
       <div class="user-avatar">
         <mat-icon>person</mat-icon>
@@ -35,7 +35,7 @@
         <span class="nav-label">Pets</span>
       </a>
       <a mat-list-item routerLink="/dashboard/appointments" [class.active-link]="isActive('/appointments')">
-        <mat-icon class="nav-icon">event</mat-icon>
+        <mat-icon class="nav-icon">event_note</mat-icon>
         <span class="nav-label">Appointments</span>
       </a>
       <a mat-list-item routerLink="/dashboard/treatments" [class.active-link]="isActive('/treatments')">
@@ -47,7 +47,7 @@
         <span class="nav-label">Medications</span>
       </a>
       <a mat-list-item routerLink="/dashboard/invoices" [class.active-link]="isActive('/invoices')">
-        <mat-icon class="nav-icon">receipt</mat-icon>
+        <mat-icon class="nav-icon">receipt_long</mat-icon>
         <span class="nav-label">Invoices</span>
       </a>
     </mat-nav-list>

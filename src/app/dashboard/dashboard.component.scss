@@ -1,58 +1,80 @@
 .dashboard-container {
-  padding: 20px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .dashboard-title {
   margin-bottom: 24px;
-  color: #3f51b5;
+  color: #009688;
   font-size: 1.8rem;
   font-weight: 500;
+  position: relative;
+  padding-bottom: 8px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #009688, rgba(0, 150, 136, 0.4));
+    border-radius: 3px;
+  }
 }
 
 .dashboard-overview {
   margin-top: 20px;
+  animation: fadeIn 0.5s 0.2s ease both;
 }
 
 .stats-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 30px;
 }
 
 .stat-card {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    
+    .stat-icon {
+      transform: scale(1.1) rotate(10deg);
+    }
+  }
 }
 
 mat-card-content {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 20px;
 }
 
 .stat-icon {
-  background-color: #f0f4ff;
+  background-color: rgba(0, 150, 136, 0.1);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 18px;
+  transition: transform 0.3s ease;
 }
 
 .stat-icon mat-icon {
-  color: #3f51b5;
-  font-size: 28px;
-  height: 28px;
-  width: 28px;
+  color: #009688;
+  font-size: 32px;
+  height: 32px;
+  width: 32px;
 }
 
 .stat-info {
@@ -61,7 +83,7 @@ mat-card-content {
 }
 
 .stat-value {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #333;
   line-height: 1.2;
@@ -70,20 +92,34 @@ mat-card-content {
 .stat-label {
   font-size: 14px;
   color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .dashboard-content {
   background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 
   &.has-child {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
+}
+
+/* Animation for dashboard elements */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+app-welcome-widget {
+  display: block;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 /* Responsive adjustments */
@@ -95,7 +131,24 @@ mat-card-content {
 
 @media (max-width: 768px) {
   .dashboard-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+  
+  .dashboard-container {
+    padding: 16px;
+  }
+  
+  .stat-card mat-card-content {
+    padding: 16px;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .stat-value {
+    font-size: 24px;
   }
 }
 
@@ -105,6 +158,10 @@ mat-card-content {
   }
   
   .dashboard-container {
-    padding: 10px;
+    padding: 12px;
+  }
+  
+  .dashboard-content {
+    padding: 16px;
   }
 }
